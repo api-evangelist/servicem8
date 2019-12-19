@@ -1,0 +1,79 @@
+{
+    "name": "ServiceM8",
+    "description": "ServiceM8 is a cloud \u00adbased solution that helps field service organisations manage their business. ServiceM8 guides users from creating job quotes to invoicing and payment collection, and provides real\u00adtime information on what jobs are active, what quo...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/926-servicem8.jpg",
+    "tags": [
+        "have api",
+        "invoices",
+        "schedules",
+        "webhook implementations",
+        "workforce"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/servicem8\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "ServiceM8",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/926-servicem8.jpg",
+            "humanURL": "http:\/\/www.servicem8.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/servicem8-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "http:\/\/www.servicem8.com\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/servicem8.com\/blog\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.servicem8.com\/feed\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/servicem8"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/servicem8"
+        },
+        {
+            "type": "Email",
+            "url": "support@servicem8.com"
+        },
+        {
+            "type": "Email",
+            "url": "testimonial@servicem8.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@servicem8.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/servicem8"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/servicem8"
+        },
+        {
+            "type": "Webhooks",
+            "url": "https:\/\/developer.servicem8.com\/docs\/webhooks-overview"
+        }
+    ]
+}
