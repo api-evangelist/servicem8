@@ -1,0 +1,124 @@
+aid: servicem8
+name: ServiceM8
+review:
+  question: Does ServiceM8 expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. ServiceM8's public API surface is
+    request/response REST over HTTPS (plain JSON, GET/POST/DELETE) under
+    https://api.servicem8.com/api_1.0. ServiceM8's only server-push mechanism is
+    HTTP webhooks: object and event webhook subscriptions POST a small change
+    notification (object type, changed fields, uuid, resource_url) to a
+    subscriber's callback URL. That is server-to-endpoint HTTP, not a WebSocket
+    or SSE stream on ServiceM8's own API, so there is no realtime transport to
+    model in AsyncAPI.
+findings:
+  summary: |
+    ServiceM8 does not publish a documented public WebSocket API. ServiceM8 is
+    field service and job management software for trades and home-service
+    businesses. Its public API is a REST API - plain JSON over HTTP using GET,
+    POST, and DELETE - with base URL https://api.servicem8.com/api_1.0. Every
+    object (Job, Company, JobActivity, JobMaterial, Attachment, Staff, Queue,
+    Vendor, Badge, and 50+ others) has its own .json URL and is manipulated in
+    isolation. Private integrations authenticate with an API key in the
+    X-API-Key header; public add-ons authenticate with OAuth 2.0 (authorize at
+    go.servicem8.com/oauth/authorize, token at go.servicem8.com/oauth/access_token,
+    Bearer access tokens with a 1-hour lifetime and refresh tokens). The only
+    push transport ServiceM8 documents is HTTP webhooks (object and event
+    webhook subscriptions managed at https://api.servicem8.com/webhook_subscriptions),
+    which POST change notifications to a callback URL. No ws:// or wss://
+    endpoint is documented anywhere in ServiceM8's REST, Webhooks, Messaging,
+    Document Templates, Custom Fields, or Feed API references as of the review
+    date.
+  openSource: |
+    ServiceM8 is a proprietary SaaS product, not open source. ServiceM8 does
+    maintain a public GitHub organization (github.com/servicem8) with supporting
+    developer tooling and samples - servicem8-node (a TypeScript client),
+    addon-sdk-samples (Add-on SDK examples), and n8n-nodes-servicem8 - but the
+    ServiceM8 platform itself is closed and hosted.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.servicem8.com/api_1.0
+      documented: true
+      note: Core object CRUD as plain JSON over HTTP using GET, POST, and DELETE.
+    - protocol: OAuth2
+      scheme: https
+      baseURL: https://go.servicem8.com/oauth
+      documented: true
+      note: Authorization Code flow for public add-ons; authorize and access_token endpoints; 1-hour access tokens with refresh tokens.
+    - protocol: Webhook
+      scheme: https
+      baseURL: https://api.servicem8.com/webhook_subscriptions
+      documented: true
+      note: Object and event webhook subscriptions POST change notifications (object, changed fields, uuid, resource_url) to a callback URL. Server-to-endpoint HTTP, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in any ServiceM8 API reference as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.servicem8.com/api_1.0/company.json
+    - GET    https://api.servicem8.com/api_1.0/jobcontact.json
+    - GET    https://api.servicem8.com/api_1.0/companycontact.json
+    - GET    https://api.servicem8.com/webhook_subscriptions
+    - POST   https://api.servicem8.com/webhook_subscriptions
+    - POST   https://go.servicem8.com/oauth/access_token
+    - GET    https://go.servicem8.com/oauth/authorize
+  endpointsModeledRest:
+    - GET    https://api.servicem8.com/api_1.0/job.json
+    - POST   https://api.servicem8.com/api_1.0/job.json
+    - GET    https://api.servicem8.com/api_1.0/job/{uuid}.json
+    - POST   https://api.servicem8.com/api_1.0/job/{uuid}.json
+    - DELETE https://api.servicem8.com/api_1.0/job/{uuid}.json
+    - GET    https://api.servicem8.com/api_1.0/jobactivity.json
+    - GET    https://api.servicem8.com/api_1.0/staff.json
+    - GET    https://api.servicem8.com/api_1.0/material.json
+    - GET    https://api.servicem8.com/api_1.0/jobmaterial.json
+    - GET    https://api.servicem8.com/api_1.0/attachment.json
+    - GET    https://api.servicem8.com/api_1.0/attachment/{uuid}.file
+    - GET    https://api.servicem8.com/api_1.0/queue.json
+    - GET    https://api.servicem8.com/api_1.0/vendor.json
+    - GET    https://api.servicem8.com/api_1.0/badge.json
+  endpointsModeledNote: |
+    The base URL (https://api.servicem8.com/api_1.0), the plain-JSON
+    GET/POST/DELETE model, and the /{object}.json + /{object}/{uuid}.json URL
+    pattern are all confirmed in ServiceM8's own documentation, as are the
+    company.json, jobcontact.json, and companycontact.json object filenames.
+    The remaining object filenames above (job, jobactivity, staff, material,
+    jobmaterial, attachment, queue, vendor, badge) are modeled from ServiceM8's
+    documented resource index and its consistent lowercase object-naming
+    convention rather than transcribed from an individual reference page, so
+    they are listed as modeled and should be verified against the live
+    reference during reconciliation.
+sources:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+    note: REST API is plain JSON over HTTP using GET/POST/DELETE; each resource has its own URL. No WebSocket mentioned.
+  - url: https://developer.servicem8.com/docs/authentication
+    type: Documentation
+    note: X-API-Key for private apps; OAuth 2.0 (authorize + access_token on go.servicem8.com) with 1-hour Bearer tokens for public add-ons. company.json curl example confirms base URL.
+  - url: https://developer.servicem8.com/docs/webhooks-overview
+    type: Documentation
+    note: Object and event webhook subscriptions POST change notifications to a callback URL. HTTP webhooks, not WebSocket.
+  - url: https://developer.servicem8.com/reference/get_webhook_subscriptions
+    type: APIReference
+    note: Webhook subscriptions managed at https://api.servicem8.com/webhook_subscriptions.
+  - url: https://developer.servicem8.com/docs/http-response-codes
+    type: Documentation
+    note: Rate limits 180 req/min and 20,000 req/day; HTTP 429 with body "Number of allowed API requests per minute exceeded".
+  - url: https://github.com/servicem8
+    type: SourceCode
+    note: Public GitHub org with servicem8-node client and Add-on SDK samples; the ServiceM8 platform itself is proprietary.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. ServiceM8's own public API is
+    request/response REST plus outbound HTTP webhooks. No AsyncAPI document was
+    created because there is no server-push streaming transport (WebSocket or
+    SSE) on ServiceM8's API to model; webhooks are one-shot HTTP callbacks and
+    are represented in the OpenAPI and collections as the webhook_subscriptions
+    management endpoints.

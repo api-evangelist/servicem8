@@ -1,0 +1,406 @@
+{
+  "info": {
+    "name": "ServiceM8 REST API",
+    "description": "ServiceM8 field service and job management REST API. Plain JSON over HTTP with GET, POST, and DELETE. Base URL: https://api.servicem8.com/api_1.0. Each object type is a .json collection (e.g. GET /company.json to list, GET /company/{uuid}.json to retrieve, POST /company.json to create, POST /company/{uuid}.json to update, DELETE /company/{uuid}.json to delete). Private integrations authenticate with the X-API-Key header; public add-ons use OAuth 2.0 Bearer tokens. Webhook subscription endpoints live at https://api.servicem8.com/webhook_subscriptions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "X-API-Key", "type": "string" },
+      { "key": "value", "value": "{{apiKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.servicem8.com/api_1.0", "type": "string" },
+    { "key": "rootUrl", "value": "https://api.servicem8.com", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" },
+    { "key": "uuid", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Jobs",
+      "item": [
+        {
+          "name": "List jobs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/job.json", "host": ["{{baseUrl}}"], "path": ["job.json"] },
+            "description": "Lists jobs. Supports $filter."
+          }
+        },
+        {
+          "name": "Create a job",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"company_uuid\": \"\",\n  \"status\": \"Quote\",\n  \"job_address\": \"\",\n  \"job_description\": \"\"\n}" },
+            "url": { "raw": "{{baseUrl}}/job.json", "host": ["{{baseUrl}}"], "path": ["job.json"] },
+            "description": "Creates a job. New record UUID returned in x-record-uuid header."
+          }
+        },
+        {
+          "name": "Retrieve a job",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/job/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["job", "{{uuid}}.json"] },
+            "description": "Retrieves a single job by UUID."
+          }
+        },
+        {
+          "name": "Update a job",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"Work Order\"\n}" },
+            "url": { "raw": "{{baseUrl}}/job/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["job", "{{uuid}}.json"] },
+            "description": "Updates a job by UUID (POST to the record URL)."
+          }
+        },
+        {
+          "name": "Delete a job",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/job/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["job", "{{uuid}}.json"] },
+            "description": "Deletes a job by UUID."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Job Activities",
+      "item": [
+        {
+          "name": "List job activities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobactivity.json", "host": ["{{baseUrl}}"], "path": ["jobactivity.json"] },
+            "description": "Lists job activities (scheduled bookings and recorded time)."
+          }
+        },
+        {
+          "name": "Create a job activity",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"job_uuid\": \"\",\n  \"staff_uuid\": \"\",\n  \"start_date\": \"2026-07-10 09:00:00\",\n  \"end_date\": \"2026-07-10 11:00:00\"\n}" },
+            "url": { "raw": "{{baseUrl}}/jobactivity.json", "host": ["{{baseUrl}}"], "path": ["jobactivity.json"] },
+            "description": "Schedules a job activity for a staff member."
+          }
+        },
+        {
+          "name": "Retrieve a job activity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobactivity/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["jobactivity", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "Update a job activity",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"end_date\": \"2026-07-10 12:00:00\"\n}" },
+            "url": { "raw": "{{baseUrl}}/jobactivity/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["jobactivity", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "Delete a job activity",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobactivity/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["jobactivity", "{{uuid}}.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clients (Companies)",
+      "item": [
+        {
+          "name": "List companies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/company.json", "host": ["{{baseUrl}}"], "path": ["company.json"] },
+            "description": "Lists client companies (UI: Clients/Customers)."
+          }
+        },
+        {
+          "name": "Create a company",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Acme Pty Ltd\",\n  \"email\": \"accounts@acme.example\"\n}" },
+            "url": { "raw": "{{baseUrl}}/company.json", "host": ["{{baseUrl}}"], "path": ["company.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a company",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/company/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["company", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "Update a company",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"billing@acme.example\"\n}" },
+            "url": { "raw": "{{baseUrl}}/company/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["company", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "Delete a company",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/company/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["company", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "List company contacts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/companycontact.json", "host": ["{{baseUrl}}"], "path": ["companycontact.json"] }
+          }
+        },
+        {
+          "name": "Create a company contact",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"company_uuid\": \"\",\n  \"first\": \"Jane\",\n  \"last\": \"Doe\",\n  \"email\": \"jane@acme.example\"\n}" },
+            "url": { "raw": "{{baseUrl}}/companycontact.json", "host": ["{{baseUrl}}"], "path": ["companycontact.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Job Contacts",
+      "item": [
+        {
+          "name": "List job contacts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobcontact.json", "host": ["{{baseUrl}}"], "path": ["jobcontact.json"] }
+          }
+        },
+        {
+          "name": "Create a job contact",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"job_uuid\": \"\",\n  \"first\": \"John\",\n  \"last\": \"Smith\",\n  \"type\": \"JOB\"\n}" },
+            "url": { "raw": "{{baseUrl}}/jobcontact.json", "host": ["{{baseUrl}}"], "path": ["jobcontact.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a job contact",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobcontact/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["jobcontact", "{{uuid}}.json"] }
+          }
+        },
+        {
+          "name": "Delete a job contact",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobcontact/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["jobcontact", "{{uuid}}.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Staff",
+      "item": [
+        {
+          "name": "List staff",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/staff.json", "host": ["{{baseUrl}}"], "path": ["staff.json"] }
+          }
+        },
+        {
+          "name": "Retrieve a staff member",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/staff/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["staff", "{{uuid}}.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materials",
+      "item": [
+        {
+          "name": "List materials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/material.json", "host": ["{{baseUrl}}"], "path": ["material.json"] }
+          }
+        },
+        {
+          "name": "List job materials",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/jobmaterial.json", "host": ["{{baseUrl}}"], "path": ["jobmaterial.json"] }
+          }
+        },
+        {
+          "name": "Create a job material",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"job_uuid\": \"\",\n  \"name\": \"Callout Fee\",\n  \"quantity\": \"1\",\n  \"price\": \"120.00\"\n}" },
+            "url": { "raw": "{{baseUrl}}/jobmaterial.json", "host": ["{{baseUrl}}"], "path": ["jobmaterial.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Attachments",
+      "item": [
+        {
+          "name": "List attachments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/attachment.json", "host": ["{{baseUrl}}"], "path": ["attachment.json"] }
+          }
+        },
+        {
+          "name": "Create an attachment record",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"related_object\": \"job\",\n  \"related_object_uuid\": \"\",\n  \"attachment_name\": \"site-photo.jpg\",\n  \"file_type\": \".jpg\"\n}" },
+            "url": { "raw": "{{baseUrl}}/attachment.json", "host": ["{{baseUrl}}"], "path": ["attachment.json"] },
+            "description": "Creates the attachment record; upload bytes to /attachment/{uuid}.file."
+          }
+        },
+        {
+          "name": "Download attachment file",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/attachment/{{uuid}}.file", "host": ["{{baseUrl}}"], "path": ["attachment", "{{uuid}}.file"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Queues",
+      "item": [
+        {
+          "name": "List queues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/queue.json", "host": ["{{baseUrl}}"], "path": ["queue.json"] }
+          }
+        },
+        {
+          "name": "Create a queue",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Scheduled\"\n}" },
+            "url": { "raw": "{{baseUrl}}/queue.json", "host": ["{{baseUrl}}"], "path": ["queue.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vendors",
+      "item": [
+        {
+          "name": "List vendors",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor.json", "host": ["{{baseUrl}}"], "path": ["vendor.json"] },
+            "description": "Returns the connected ServiceM8 account (vendor) record."
+          }
+        },
+        {
+          "name": "Retrieve a vendor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/vendor/{{uuid}}.json", "host": ["{{baseUrl}}"], "path": ["vendor", "{{uuid}}.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Badges",
+      "item": [
+        {
+          "name": "List badges",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/badge.json", "host": ["{{baseUrl}}"], "path": ["badge.json"] }
+          }
+        },
+        {
+          "name": "Create a badge",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"VIP\",\n  \"colour\": \"#FF0000\"\n}" },
+            "url": { "raw": "{{baseUrl}}/badge.json", "host": ["{{baseUrl}}"], "path": ["badge.json"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhook subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": { "raw": "{{rootUrl}}/webhook_subscriptions", "host": ["{{rootUrl}}"], "path": ["webhook_subscriptions"] }
+          }
+        },
+        {
+          "name": "Create an object webhook subscription",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n  \"object\": \"job\",\n  \"fields\": \"status,queue_uuid\",\n  \"callback_url\": \"https://example.com/servicem8/webhook\"\n}" },
+            "url": { "raw": "{{rootUrl}}/webhook_subscriptions", "host": ["{{rootUrl}}"], "path": ["webhook_subscriptions"] },
+            "description": "Subscribe to field changes on an object; ServiceM8 POSTs object, changed fields, uuid, and resource_url to the callback."
+          }
+        },
+        {
+          "name": "Delete a webhook subscription",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{rootUrl}}/webhook_subscriptions/{{uuid}}", "host": ["{{rootUrl}}"], "path": ["webhook_subscriptions", "{{uuid}}"] }
+          }
+        }
+      ]
+    }
+  ]
+}

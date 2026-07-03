@@ -1,0 +1,255 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ServiceM8 REST API",
+    "version": "1.0",
+    "description": "ServiceM8 field service and job management REST API. Plain JSON over HTTP with GET, POST, and DELETE against object endpoints under https://api.servicem8.com/api_1.0. Each object type is a .json collection; single records are addressed as /{object}/{uuid}.json. Private integrations use the X-API-Key header; public add-ons use OAuth 2.0 Bearer tokens. Webhook subscriptions live at https://api.servicem8.com/webhook_subscriptions."
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "X-API-Key",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "Jobs", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List jobs", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/job.json" },
+          "docs": "Lists jobs. Supports OData-style $filter."
+        },
+        {
+          "info": { "name": "Create a job", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/job.json", "body": { "type": "json", "data": "{\"company_uuid\":\"\",\"status\":\"Quote\",\"job_address\":\"\",\"job_description\":\"\"}" } },
+          "docs": "Creates a job. New record UUID is returned in the x-record-uuid response header."
+        },
+        {
+          "info": { "name": "Retrieve a job", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/job/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path", "description": "Job UUID." } ] },
+          "docs": "Retrieves a single job by UUID."
+        },
+        {
+          "info": { "name": "Update a job", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/job/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{\"status\":\"Work Order\"}" } },
+          "docs": "Updates a job by POSTing to the record URL."
+        },
+        {
+          "info": { "name": "Delete a job", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.servicem8.com/api_1.0/job/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Deletes a job by UUID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Job Activities", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List job activities", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/jobactivity.json" },
+          "docs": "Lists job activities (scheduled bookings and recorded time)."
+        },
+        {
+          "info": { "name": "Create a job activity", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/jobactivity.json", "body": { "type": "json", "data": "{\"job_uuid\":\"\",\"staff_uuid\":\"\",\"start_date\":\"2026-07-10 09:00:00\",\"end_date\":\"2026-07-10 11:00:00\"}" } },
+          "docs": "Schedules a job activity for a staff member."
+        },
+        {
+          "info": { "name": "Retrieve a job activity", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/jobactivity/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Retrieves a single job activity by UUID."
+        },
+        {
+          "info": { "name": "Delete a job activity", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.servicem8.com/api_1.0/jobactivity/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Deletes a job activity by UUID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Clients (Companies)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List companies", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/company.json" },
+          "docs": "Lists client companies (UI: Clients/Customers)."
+        },
+        {
+          "info": { "name": "Create a company", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/company.json", "body": { "type": "json", "data": "{\"name\":\"Acme Pty Ltd\",\"email\":\"accounts@acme.example\"}" } },
+          "docs": "Creates a client company."
+        },
+        {
+          "info": { "name": "Retrieve a company", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/company/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Retrieves a single company by UUID."
+        },
+        {
+          "info": { "name": "Update a company", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/company/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ], "body": { "type": "json", "data": "{\"email\":\"billing@acme.example\"}" } },
+          "docs": "Updates a company by POSTing to the record URL."
+        },
+        {
+          "info": { "name": "Delete a company", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.servicem8.com/api_1.0/company/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Deletes a company by UUID."
+        },
+        {
+          "info": { "name": "List company contacts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/companycontact.json" },
+          "docs": "Lists company contacts."
+        },
+        {
+          "info": { "name": "Create a company contact", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/companycontact.json", "body": { "type": "json", "data": "{\"company_uuid\":\"\",\"first\":\"Jane\",\"last\":\"Doe\",\"email\":\"jane@acme.example\"}" } },
+          "docs": "Creates a company contact."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Job Contacts", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List job contacts", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/jobcontact.json" },
+          "docs": "Lists job contacts."
+        },
+        {
+          "info": { "name": "Create a job contact", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/jobcontact.json", "body": { "type": "json", "data": "{\"job_uuid\":\"\",\"first\":\"John\",\"last\":\"Smith\",\"type\":\"JOB\"}" } },
+          "docs": "Creates a job contact (types: JOB, BILLING, Property Owner, Property Manager)."
+        },
+        {
+          "info": { "name": "Delete a job contact", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.servicem8.com/api_1.0/jobcontact/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Deletes a job contact by UUID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Staff", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List staff", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/staff.json" },
+          "docs": "Lists staff members."
+        },
+        {
+          "info": { "name": "Retrieve a staff member", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/staff/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Retrieves a single staff member by UUID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Materials", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List materials", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/material.json" },
+          "docs": "Lists the materials catalog."
+        },
+        {
+          "info": { "name": "List job materials", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/jobmaterial.json" },
+          "docs": "Lists job material line items."
+        },
+        {
+          "info": { "name": "Create a job material", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/jobmaterial.json", "body": { "type": "json", "data": "{\"job_uuid\":\"\",\"name\":\"Callout Fee\",\"quantity\":\"1\",\"price\":\"120.00\"}" } },
+          "docs": "Adds a line item to a job."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Attachments", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List attachments", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/attachment.json" },
+          "docs": "Lists attachment metadata records."
+        },
+        {
+          "info": { "name": "Create an attachment record", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/attachment.json", "body": { "type": "json", "data": "{\"related_object\":\"job\",\"related_object_uuid\":\"\",\"attachment_name\":\"site-photo.jpg\",\"file_type\":\".jpg\"}" } },
+          "docs": "Creates the attachment record; upload bytes to /attachment/{uuid}.file."
+        },
+        {
+          "info": { "name": "Download attachment file", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.file", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Downloads the binary file for an attachment."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Queues", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List queues", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/queue.json" },
+          "docs": "Lists workflow queues."
+        },
+        {
+          "info": { "name": "Create a queue", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/queue.json", "body": { "type": "json", "data": "{\"name\":\"Scheduled\"}" } },
+          "docs": "Creates a workflow queue."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Vendors", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List vendors", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/vendor.json" },
+          "docs": "Returns the connected ServiceM8 account (vendor) record."
+        },
+        {
+          "info": { "name": "Retrieve a vendor", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/vendor/:uuid.json", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Retrieves a single vendor (account) record by UUID."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Badges", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List badges", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/api_1.0/badge.json" },
+          "docs": "Lists badges."
+        },
+        {
+          "info": { "name": "Create a badge", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/api_1.0/badge.json", "body": { "type": "json", "data": "{\"name\":\"VIP\",\"colour\":\"#FF0000\"}" } },
+          "docs": "Creates a badge."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Webhooks", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List webhook subscriptions", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.servicem8.com/webhook_subscriptions" },
+          "docs": "Lists webhook subscriptions."
+        },
+        {
+          "info": { "name": "Create an object webhook subscription", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.servicem8.com/webhook_subscriptions", "body": { "type": "json", "data": "{\"object\":\"job\",\"fields\":\"status,queue_uuid\",\"callback_url\":\"https://example.com/servicem8/webhook\"}" } },
+          "docs": "Subscribe to field changes on an object; ServiceM8 POSTs object, changed fields, uuid, and resource_url to the callback."
+        },
+        {
+          "info": { "name": "Delete a webhook subscription", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.servicem8.com/webhook_subscriptions/:uuid", "params": [ { "name": "uuid", "value": "", "type": "path" } ] },
+          "docs": "Deletes a webhook subscription by UUID."
+        }
+      ]
+    }
+  ]
+}

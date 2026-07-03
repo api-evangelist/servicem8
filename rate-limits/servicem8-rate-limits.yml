@@ -1,0 +1,60 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: ServiceM8
+providerId: servicem8
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Field Service
+- Job Management
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  ServiceM8 applies API throttling on a per-application and per-account basis.
+  The documented limits are 180 requests per minute and 20,000 requests per day.
+  Exceeding either limit returns an HTTP 429 response with the text body
+  "Number of allowed API requests per minute exceeded". Because throttling is
+  scoped per application per account, an add-on connected to two different
+  customers' ServiceM8 accounts is throttled separately for each account.
+notes: >-
+  Most integrations never approach these limits. ServiceM8 recommends
+  anticipating 429s and responding with cached values, user messaging, or a
+  retry later. Use webhook subscriptions instead of polling to stay well under
+  the request budget.
+sources:
+- https://developer.servicem8.com/docs/http-response-codes
+- https://developer.servicem8.com/discuss/5e7c063a3e0315004cec6878
+- https://developer.servicem8.com/docs/rest-overview
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Minute
+  scope: application-account
+  metric: requests
+  limit: 180
+  timeFrame: minute
+  notes: 180 requests per minute per application per connected account. HTTP 429 on exceed.
+- name: Requests Per Day
+  scope: application-account
+  metric: requests
+  limit: 20000
+  timeFrame: day
+  notes: 20,000 requests per day per application per connected account. HTTP 429 on exceed.
+- name: SMS Sending
+  scope: account
+  metric: messages
+  limit: plan credit pack
+  notes: Outbound SMS via the Messaging API consumes the account's SMS credits and incurs charges beyond the plan pack.
+policies:
+- name: Per-Application Per-Account Scoping
+  description: Throttling counters are tracked separately for each application connected to each ServiceM8 account.
+- name: Backoff and Caching
+  description: On a 429, use a cached value from a prior call, notify the end user, or retry later with backoff.
+- name: Prefer Webhooks Over Polling
+  description: Subscribe to object/event webhooks to receive change notifications instead of polling collections, reducing request volume.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

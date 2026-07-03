@@ -1,0 +1,302 @@
+aid: servicem8
+url: https://raw.githubusercontent.com/api-evangelist/servicem8/refs/heads/main/apis.yml
+name: ServiceM8
+kind: company
+description: ServiceM8 is field service and job management software for trade and
+  home-service businesses - electricians, plumbers, HVAC, cleaners, landscapers, and
+  similar contractors. It manages the full job lifecycle from lead and quote through
+  scheduling, dispatch, on-site work, materials, invoicing, and payment. ServiceM8
+  publishes a documented REST API at https://api.servicem8.com/api_1.0 that exposes
+  its core objects - Jobs, Job Activities, Clients (Companies), Contacts, Staff,
+  Materials, Job Materials, Attachments, Queues, Vendors, and Badges - as plain JSON
+  over HTTP using GET, POST, and DELETE. Private integrations authenticate with an
+  API key (X-API-Key header); public add-ons use OAuth 2.0. Object and event webhook
+  subscriptions push change notifications to a callback URL.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Field Service
+- Job Management
+- Trades
+- Scheduling
+- Dispatch
+- Invoicing
+- Home Services
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: servicem8:servicem8-jobs-api
+  name: ServiceM8 Jobs API
+  tags:
+  - Jobs
+  - Work Orders
+  - Job Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Create, list, retrieve, update, and delete jobs - the central ServiceM8
+    record covering a piece of work from lead and quote through scheduling, completion,
+    invoicing, and payment. Jobs carry status, description, billing details, and links
+    to the client company and site location.
+- aid: servicem8:servicem8-job-activities-api
+  name: ServiceM8 Job Activities API
+  tags:
+  - Job Activities
+  - Scheduling
+  - Time Tracking
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage job activities - the scheduled bookings and recorded time entries
+    attached to a job. Each activity ties a staff member to a job with start and end
+    times, representing both a calendar booking and, once worked, the tracked labour.
+- aid: servicem8:servicem8-clients-api
+  name: ServiceM8 Clients (Companies) API
+  tags:
+  - Clients
+  - Companies
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage clients (called Company in the API) and their company contacts -
+    the customers ServiceM8 does work for. Create, list, retrieve, update, and delete
+    companies and the associated contact people, phone numbers, and email addresses.
+- aid: servicem8:servicem8-contacts-api
+  name: ServiceM8 Job Contacts API
+  tags:
+  - Contacts
+  - Job Contacts
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage job contacts - the people attached to a specific job in roles such
+    as job contact, billing contact, property owner, or property manager. Create, list,
+    retrieve, update, and delete contacts scoped to a job.
+- aid: servicem8:servicem8-staff-api
+  name: ServiceM8 Staff API
+  tags:
+  - Staff
+  - Users
+  - Technicians
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage staff members - the technicians, office users, and field workers
+    in a ServiceM8 account. Create, list, retrieve, update, and delete staff records
+    including name, contact details, and security role, which are referenced by job
+    activities and allocations.
+- aid: servicem8:servicem8-materials-api
+  name: ServiceM8 Materials API
+  tags:
+  - Materials
+  - Job Materials
+  - Line Items
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage the materials catalog and job materials. Materials are reusable
+    priced items in the inventory list; job materials are the line items added to a
+    specific job's quote or invoice. Create, list, retrieve, update, and delete both.
+- aid: servicem8:servicem8-attachments-api
+  name: ServiceM8 Attachments API
+  tags:
+  - Attachments
+  - Files
+  - Photos
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage attachments - files linked to jobs and other objects, including
+    photos, quotes, invoices, work orders, and signed documents. Create the metadata
+    record, upload and download the binary file data, and list, update, or delete
+    attachments.
+- aid: servicem8:servicem8-queues-api
+  name: ServiceM8 Queues API
+  tags:
+  - Queues
+  - Workflow
+  - Job Status
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage queues - the custom workflow stages a job moves through (for
+    example New Lead, Quote Sent, Scheduled, In Progress, Complete). Create, list,
+    retrieve, update, and delete queues used to organise jobs on the dispatch board.
+- aid: servicem8:servicem8-vendors-api
+  name: ServiceM8 Vendors API
+  tags:
+  - Vendors
+  - Accounts
+  - Suppliers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Retrieve and list vendors - the ServiceM8 account records that own the
+    data an integration operates against. The vendor object identifies the connected
+    account, its plan, and account-level settings referenced across other objects.
+- aid: servicem8:servicem8-badges-api
+  name: ServiceM8 Badges API
+  tags:
+  - Badges
+  - Labels
+  - Tags
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/rest-overview
+  baseURL: https://api.servicem8.com/api_1.0
+  properties:
+  - url: https://developer.servicem8.com/docs/rest-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Manage badges - the coloured labels used to tag and categorise jobs and
+    clients for filtering and reporting. Create, list, retrieve, update, and delete
+    badges applied across the account.
+- aid: servicem8:servicem8-webhooks-api
+  name: ServiceM8 Webhooks API
+  tags:
+  - Webhooks
+  - Subscriptions
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.servicem8.com/docs/webhooks-overview
+  baseURL: https://api.servicem8.com
+  properties:
+  - url: https://developer.servicem8.com/docs/webhooks-overview
+    type: Documentation
+  - url: https://developer.servicem8.com/reference/get_webhook_subscriptions
+    type: APIReference
+  - url: openapi/servicem8-openapi.yml
+    type: OpenAPI
+  - url: collections/servicem8.postman_collection.json
+    type: PostmanCollection
+  - url: collections/servicem8.opencollection.json
+    type: OpenCollection
+  description: Create and manage object and event webhook subscriptions. Subscribe to
+    changes on specific fields of an object type (such as job or company); when a
+    subscribed field changes, ServiceM8 POSTs the object type, changed fields, uuid,
+    and a resource_url to your callback URL for you to fetch the full record.
+common:
+- type: GitHubOrganization
+  url: https://github.com/servicem8
+- type: LinkedIn
+  url: https://www.linkedin.com/company/servicem8
+- type: Website
+  url: https://www.servicem8.com
+- type: Documentation
+  url: https://developer.servicem8.com/docs
+- type: Plans
+  url: plans/servicem8-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/servicem8-rate-limits.yml
+- type: FinOps
+  url: finops/servicem8-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

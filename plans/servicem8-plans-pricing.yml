@@ -1,0 +1,231 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: ServiceM8
+providerId: servicem8
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Field Service
+- Job Management
+- Trades
+- Scheduling
+- Plans
+description: >-
+  ServiceM8 is sold as a SaaS subscription priced primarily on the number of jobs
+  activated per month, not on API usage or per-user seats (all plans include
+  unlimited users). The REST API is available across paid plans at no additional
+  API fee; API access is a feature of the subscription, subject to the platform's
+  rate limits. Plan prices below reflect ServiceM8's publicly listed tiers
+  (currency shown in AUD on ServiceM8's site; regional pricing varies). Verify
+  current tiers, job counts, and included SMS/AI credits on the ServiceM8 pricing
+  page during reconciliation.
+notes: >-
+  Jobs beyond a plan's monthly allowance and SMS beyond the included credit pack
+  are billed as add-ons. There are no contracts, setup fees, or per-user fees.
+  A free tier exists for getting started. Prices are indicative and may change.
+sources:
+- https://www.servicem8.com/pricing
+- https://support.servicem8.com/help-center/tips-trick-more/more/what-does-servicem8-cost
+- https://developer.servicem8.com/docs/rest-overview
+plans:
+- id: servicem8-free
+  name: Free
+  type: free
+  description: >-
+    Entry tier for trying ServiceM8 with a small monthly job allowance and
+    unlimited users. Includes core job management and API access.
+  entries:
+  - label: Included Jobs
+    name: free_jobs
+    type: usage
+    metric: jobs
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Core Job Management
+  - name: REST API Access
+- id: servicem8-starter
+  name: Starter
+  type: paid
+  description: >-
+    Small-business tier with unlimited users, a monthly job allowance, included
+    SMS credits, and unlimited AI Assists, plus all essential features.
+  entries:
+  - label: Subscription
+    name: starter_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '29'
+    userMultiplied: false
+  - label: Included Jobs
+    name: starter_jobs
+    type: usage
+    metric: jobs
+    limit: 50
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Included SMS Credits
+    name: starter_sms
+    type: usage
+    metric: messages
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Unlimited AI Assists
+  - name: Essential Features
+  - name: REST API Access
+- id: servicem8-growing
+  name: Growing
+  type: paid
+  description: >-
+    Adds Inbox, Forms, Asset Management, Bundles, and Proposals on top of a
+    larger monthly job allowance and SMS credit pack.
+  entries:
+  - label: Subscription
+    name: growing_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '79'
+    userMultiplied: false
+  - label: Included Jobs
+    name: growing_jobs
+    type: usage
+    metric: jobs
+    limit: 150
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Included SMS Credits
+    name: growing_sms
+    type: usage
+    metric: messages
+    limit: 300
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Inbox
+  - name: Forms
+  - name: Asset Management
+  - name: Bundles
+  - name: Proposals
+  - name: REST API Access
+- id: servicem8-premium
+  name: Premium
+  type: paid
+  description: >-
+    Adds Job Costing, Markup Billing, and Knowledge on top of the Growing
+    feature set, with a larger job allowance and SMS credit pack.
+  entries:
+  - label: Subscription
+    name: premium_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '149'
+    userMultiplied: false
+  - label: Included Jobs
+    name: premium_jobs
+    type: usage
+    metric: jobs
+    limit: 500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  - label: Included SMS Credits
+    name: premium_sms
+    type: usage
+    metric: messages
+    limit: 1000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Job Costing
+  - name: Markup Billing
+  - name: Knowledge
+  - name: Inbox, Forms, Assets, Bundles, Proposals
+  - name: REST API Access
+- id: servicem8-premium-plus
+  name: Premium Plus
+  type: paid
+  description: >-
+    Top published tier with the largest job allowance and SMS credit pack and the
+    full feature set.
+  entries:
+  - label: Subscription
+    name: premium_plus_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '349'
+    userMultiplied: false
+  - label: Included Jobs
+    name: premium_plus_jobs
+    type: usage
+    metric: jobs
+    limit: 1500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included (1500+)
+    userMultiplied: false
+  - label: Included SMS Credits
+    name: premium_plus_sms
+    type: usage
+    metric: messages
+    limit: 3000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: included
+    userMultiplied: false
+  elements:
+  - name: Unlimited Users
+  - name: Full Feature Set
+  - name: Job Costing
+  - name: Markup Billing
+  - name: Knowledge
+  - name: REST API Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
