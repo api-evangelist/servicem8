@@ -1,0 +1,29 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/servicem8-openapi.yml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  description: API key for private/single-account integrations.
+  sources:
+  - openapi/servicem8-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://go.servicem8.com/oauth/authorize
+    tokenUrl: https://go.servicem8.com/oauth/access_token
+    scopes: 11
+  description: OAuth 2.0 for public add-ons. Access tokens expire after 3600 seconds.
+  sources:
+  - openapi/servicem8-openapi.yml

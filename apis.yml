@@ -283,6 +283,10 @@ apis:
     subscribed field changes, ServiceM8 POSTs the object type, changed fields, uuid,
     and a resource_url to your callback URL for you to fetch the full record.
 common:
+- type: VulnerabilityDisclosure
+  url: security/servicem8-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/servicem8-domain-security.yml
 - type: Authentication
   url: authentication/servicem8-authentication.yml
 - type: OAuthScopes
