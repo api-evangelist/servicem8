@@ -1,0 +1,78 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/servicem8-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/servicem8-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://go.servicem8.com/oauth/authorize
+    tokenUrl: https://go.servicem8.com/oauth/access_token
+  description: OAuth 2.0 for public add-ons. Access tokens expire after 3600 seconds.
+scopes:
+- scope: manage_customers
+  description: Read and write customers (companies)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: manage_inventory
+  description: Read and write materials and inventory
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: manage_jobs
+  description: Read and write jobs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: manage_schedule
+  description: Read and write scheduling and job activities
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: manage_staff
+  description: Read and write staff
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: publish_email
+  description: Send email messages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: publish_sms
+  description: Send SMS messages
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: read_customers
+  description: Read customers (companies)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: read_jobs
+  description: Read jobs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: read_staff
+  description: Read staff
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml
+- scope: vendor_logo
+  description: Read vendor account information
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/servicem8-openapi.yml

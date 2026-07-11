@@ -283,6 +283,10 @@ apis:
     subscribed field changes, ServiceM8 POSTs the object type, changed fields, uuid,
     and a resource_url to your callback URL for you to fetch the full record.
 common:
+- type: Authentication
+  url: authentication/servicem8-authentication.yml
+- type: OAuthScopes
+  url: scopes/servicem8-scopes.yml
 - type: GitHubOrganization
   url: https://github.com/servicem8
 - type: LinkedIn
@@ -297,6 +301,8 @@ common:
   url: rate-limits/servicem8-rate-limits.yml
 - type: FinOps
   url: finops/servicem8-finops.yml
+- type: Blog
+  url: https://blog.servicem8.com/feed/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
