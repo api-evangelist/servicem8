@@ -1,0 +1,13 @@
+{
+  "repo": "servicem8",
+  "feeds": [
+    {
+      "source": "https://blog.servicem8.com/feed/",
+      "feed_url": "https://blog.servicem8.com/feed/",
+      "title": "ServiceM8 Blog",
+      "saved": 0
+    }
+  ],
+  "fetched": "2026-07-11T11:43:46Z",
+  "post_count": 10
+}
