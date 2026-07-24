@@ -1,0 +1,193 @@
+openapi: 3.0.3
+info:
+  title: ServiceM8 REST Attachments API
+  description: 'ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.
+
+
+    Private integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.
+
+
+    Naming note: the ServiceM8 user interface term "Client" or "Customer" maps to the "Company" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8''s own documentation) are modeled from ServiceM8''s documented resource index and its consistent lowercase object naming convention.'
+  version: '1.0'
+  contact:
+    name: ServiceM8 Developer
+    url: https://developer.servicem8.com
+  license:
+    name: ServiceM8 API Terms
+    url: https://www.servicem8.com/terms
+servers:
+- url: https://api.servicem8.com/api_1.0
+  description: ServiceM8 REST API (object endpoints)
+- url: https://api.servicem8.com
+  description: ServiceM8 webhook subscription endpoints
+security:
+- apiKeyAuth: []
+- oauth2: []
+tags:
+- name: Attachments
+  description: Files linked to jobs - photos, PDFs, signed documents.
+paths:
+  /attachment.json:
+    get:
+      operationId: listAttachments
+      tags:
+      - Attachments
+      summary: List attachments
+      description: Lists attachment metadata records. The binary file itself is fetched or uploaded at /attachment/{uuid}.file.
+      parameters:
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: An array of attachment records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Attachment'
+    post:
+      operationId: createAttachment
+      tags:
+      - Attachments
+      summary: Create an attachment record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attachment'
+      responses:
+        '200':
+          description: Attachment metadata created. Upload the file bytes to /attachment/{uuid}.file.
+  /attachment/{uuid}.json:
+    parameters:
+    - $ref: '#/components/parameters/Uuid'
+    get:
+      operationId: getAttachment
+      tags:
+      - Attachments
+      summary: Retrieve an attachment record
+      responses:
+        '200':
+          description: A single attachment record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attachment'
+    post:
+      operationId: updateAttachment
+      tags:
+      - Attachments
+      summary: Update an attachment record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Attachment'
+      responses:
+        '200':
+          description: Attachment updated.
+    delete:
+      operationId: deleteAttachment
+      tags:
+      - Attachments
+      summary: Delete an attachment
+      responses:
+        '200':
+          description: Attachment deleted.
+  /attachment/{uuid}.file:
+    parameters:
+    - $ref: '#/components/parameters/Uuid'
+    get:
+      operationId: downloadAttachmentFile
+      tags:
+      - Attachments
+      summary: Download attachment file bytes
+      responses:
+        '200':
+          description: The binary contents of the attachment.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    post:
+      operationId: uploadAttachmentFile
+      tags:
+      - Attachments
+      summary: Upload attachment file bytes
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: File uploaded for the attachment record.
+components:
+  schemas:
+    Attachment:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        related_object:
+          type: string
+          description: The object type this attaches to, e.g. job or company.
+        related_object_uuid:
+          type: string
+        attachment_name:
+          type: string
+        file_type:
+          type: string
+          description: File extension, e.g. .jpg or .pdf.
+        photo_width:
+          type: string
+        photo_height:
+          type: string
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for private/single-account integrations.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for public add-ons. Access tokens expire after 3600 seconds.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://go.servicem8.com/oauth/authorize
+          tokenUrl: https://go.servicem8.com/oauth/access_token
+          refreshUrl: https://go.servicem8.com/oauth/access_token
+          scopes:
+            manage_jobs: Read and write jobs
+            read_jobs: Read jobs
+            manage_customers: Read and write customers (companies)
+            read_customers: Read customers (companies)
+            manage_staff: Read and write staff
+            read_staff: Read staff
+            manage_inventory: Read and write materials and inventory
+            manage_schedule: Read and write scheduling and job activities
+            publish_sms: Send SMS messages
+            publish_email: Send email messages
+            vendor_logo: Read vendor account information

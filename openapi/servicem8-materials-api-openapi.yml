@@ -1,0 +1,247 @@
+openapi: 3.0.3
+info:
+  title: ServiceM8 REST Attachments Materials API
+  description: 'ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.
+
+
+    Private integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.
+
+
+    Naming note: the ServiceM8 user interface term "Client" or "Customer" maps to the "Company" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8''s own documentation) are modeled from ServiceM8''s documented resource index and its consistent lowercase object naming convention.'
+  version: '1.0'
+  contact:
+    name: ServiceM8 Developer
+    url: https://developer.servicem8.com
+  license:
+    name: ServiceM8 API Terms
+    url: https://www.servicem8.com/terms
+servers:
+- url: https://api.servicem8.com/api_1.0
+  description: ServiceM8 REST API (object endpoints)
+- url: https://api.servicem8.com
+  description: ServiceM8 webhook subscription endpoints
+security:
+- apiKeyAuth: []
+- oauth2: []
+tags:
+- name: Materials
+  description: Materials catalog and job material line items.
+paths:
+  /material.json:
+    get:
+      operationId: listMaterials
+      tags:
+      - Materials
+      summary: List materials
+      parameters:
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: An array of material records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Material'
+    post:
+      operationId: createMaterial
+      tags:
+      - Materials
+      summary: Create a material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Material'
+      responses:
+        '200':
+          description: Material created.
+  /material/{uuid}.json:
+    parameters:
+    - $ref: '#/components/parameters/Uuid'
+    get:
+      operationId: getMaterial
+      tags:
+      - Materials
+      summary: Retrieve a material
+      responses:
+        '200':
+          description: A single material record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Material'
+    post:
+      operationId: updateMaterial
+      tags:
+      - Materials
+      summary: Update a material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Material'
+      responses:
+        '200':
+          description: Material updated.
+    delete:
+      operationId: deleteMaterial
+      tags:
+      - Materials
+      summary: Delete a material
+      responses:
+        '200':
+          description: Material deleted.
+  /jobmaterial.json:
+    get:
+      operationId: listJobMaterials
+      tags:
+      - Materials
+      summary: List job materials
+      description: Line items (materials/labour) added to a specific job.
+      parameters:
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: An array of job material records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobMaterial'
+    post:
+      operationId: createJobMaterial
+      tags:
+      - Materials
+      summary: Create a job material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobMaterial'
+      responses:
+        '200':
+          description: Job material created.
+  /jobmaterial/{uuid}.json:
+    parameters:
+    - $ref: '#/components/parameters/Uuid'
+    get:
+      operationId: getJobMaterial
+      tags:
+      - Materials
+      summary: Retrieve a job material
+      responses:
+        '200':
+          description: A single job material record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobMaterial'
+    post:
+      operationId: updateJobMaterial
+      tags:
+      - Materials
+      summary: Update a job material
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobMaterial'
+      responses:
+        '200':
+          description: Job material updated.
+    delete:
+      operationId: deleteJobMaterial
+      tags:
+      - Materials
+      summary: Delete a job material
+      responses:
+        '200':
+          description: Job material deleted.
+components:
+  schemas:
+    JobMaterial:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        job_uuid:
+          type: string
+        material_uuid:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: string
+        price:
+          type: string
+        cost:
+          type: string
+        displayed_amount:
+          type: string
+    Material:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        cost:
+          type: string
+        tax_rate_uuid:
+          type: string
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for private/single-account integrations.
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 for public add-ons. Access tokens expire after 3600 seconds.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://go.servicem8.com/oauth/authorize
+          tokenUrl: https://go.servicem8.com/oauth/access_token
+          refreshUrl: https://go.servicem8.com/oauth/access_token
+          scopes:
+            manage_jobs: Read and write jobs
+            read_jobs: Read jobs
+            manage_customers: Read and write customers (companies)
+            read_customers: Read customers (companies)
+            manage_staff: Read and write staff
+            read_staff: Read staff
+            manage_inventory: Read and write materials and inventory
+            manage_schedule: Read and write scheduling and job activities
+            publish_sms: Send SMS messages
+            publish_email: Send email messages
+            vendor_logo: Read vendor account information
