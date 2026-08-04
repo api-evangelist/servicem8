@@ -1,0 +1,34 @@
+{
+  "provider": "servicem8",
+  "sources": [
+    "servicem8-attachments-api-openapi.yml",
+    "servicem8-badges-api-openapi.yml",
+    "servicem8-clients-api-openapi.yml",
+    "servicem8-job-activities-api-openapi.yml",
+    "servicem8-job-contacts-api-openapi.yml",
+    "servicem8-jobs-api-openapi.yml",
+    "servicem8-materials-api-openapi.yml",
+    "servicem8-queues-api-openapi.yml",
+    "servicem8-staff-api-openapi.yml",
+    "servicem8-vendors-api-openapi.yml",
+    "servicem8-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "servicem8-attachments-api-openapi.yml",
+    "servicem8-badges-api-openapi.yml",
+    "servicem8-clients-api-openapi.yml",
+    "servicem8-job-activities-api-openapi.yml",
+    "servicem8-job-contacts-api-openapi.yml",
+    "servicem8-jobs-api-openapi.yml",
+    "servicem8-materials-api-openapi.yml",
+    "servicem8-queues-api-openapi.yml",
+    "servicem8-staff-api-openapi.yml",
+    "servicem8-vendors-api-openapi.yml",
+    "servicem8-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
