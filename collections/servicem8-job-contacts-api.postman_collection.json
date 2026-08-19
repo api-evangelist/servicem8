@@ -1,0 +1,468 @@
+{
+  "item": [
+    {
+      "id": "76274a85-b696-40fd-8320-a69cfe62cbd3",
+      "name": "Job Contacts",
+      "description": {
+        "content": "People attached to a specific job (billing, site, etc.).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8925abf8-ba0f-403a-839c-99f27e1b4141",
+          "name": "List job contacts",
+          "request": {
+            "name": "List job contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "jobcontact.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1caa1cd5-e103-44e2-956b-854bc548636f",
+              "name": "An array of job contact records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobcontact.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 8278,\n    \"job_uuid\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"type\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 1828,\n    \"job_uuid\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04746ee1-0af9-4b56-bb65-dbbbe89d83b5",
+          "name": "Create a job contact",
+          "request": {
+            "name": "Create a job contact",
+            "description": {},
+            "url": {
+              "path": [
+                "jobcontact.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52fb3146-e3f4-4d3a-a0f9-8a7b3b6f65c8",
+              "name": "Job contact created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobcontact.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "824490a3-fd9b-4515-bdb9-c15fec63e387",
+          "name": "Retrieve a job contact",
+          "request": {
+            "name": "Retrieve a job contact",
+            "description": {},
+            "url": {
+              "path": [
+                "jobcontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce9c340b-841a-46f9-aaa2-dc6d626eb783",
+              "name": "A single job contact record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobcontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79425bd3-2292-4e86-bec5-8b12b96f3bda",
+          "name": "Update a job contact",
+          "request": {
+            "name": "Update a job contact",
+            "description": {},
+            "url": {
+              "path": [
+                "jobcontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b69587e-6879-409a-9619-264d916bf43a",
+              "name": "Job contact updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobcontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac4fcea9-3376-4886-a21d-21784846581b",
+          "name": "Delete a job contact",
+          "request": {
+            "name": "Delete a job contact",
+            "description": {},
+            "url": {
+              "path": [
+                "jobcontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fadc088c-0a7d-4a3b-b49c-02d93e786c88",
+              "name": "Job contact deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobcontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a50ee5c0-e764-4099-8305-cb320f65c283",
+    "name": "ServiceM8 REST Attachments Job Contacts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

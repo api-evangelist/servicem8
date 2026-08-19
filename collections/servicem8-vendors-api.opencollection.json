@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ServiceM8 REST Attachments Vendors API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Vendors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List vendors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/vendor.json"
+          },
+          "docs": "Returns the connected ServiceM8 account (vendor) record(s)."
+        },
+        {
+          "info": {
+            "name": "Retrieve a vendor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/vendor/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Retrieve a vendor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

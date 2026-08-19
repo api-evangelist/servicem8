@@ -1,0 +1,880 @@
+{
+  "item": [
+    {
+      "id": "8293f27a-f1aa-4fd8-979d-1ff248efbd12",
+      "name": "Materials",
+      "description": {
+        "content": "Materials catalog and job material line items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d55fe6a-d894-42c5-8c69-2e277995912c",
+          "name": "List materials",
+          "request": {
+            "name": "List materials",
+            "description": {},
+            "url": {
+              "path": [
+                "material.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f847d179-86d5-4f0b-b09a-7ef481897524",
+              "name": "An array of material records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 239,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"price\": \"string\",\n    \"cost\": \"string\",\n    \"tax_rate_uuid\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 5723,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"price\": \"string\",\n    \"cost\": \"string\",\n    \"tax_rate_uuid\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b0b5ce1-aa57-4f7a-87f1-907febe3ca34",
+          "name": "Create a material",
+          "request": {
+            "name": "Create a material",
+            "description": {},
+            "url": {
+              "path": [
+                "material.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"tax_rate_uuid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa7cf6ee-1a21-491d-ac57-76df7022293c",
+              "name": "Material created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"tax_rate_uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96f4d415-f1ce-4cd4-b8b4-11ef345c44f5",
+          "name": "Retrieve a material",
+          "request": {
+            "name": "Retrieve a material",
+            "description": {},
+            "url": {
+              "path": [
+                "material",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c59e657-548b-4f94-a3f5-0ff0b8cca8ee",
+              "name": "A single material record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"tax_rate_uuid\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cf6202a-7268-4b0c-812c-3b1e7911d336",
+          "name": "Update a material",
+          "request": {
+            "name": "Update a material",
+            "description": {},
+            "url": {
+              "path": [
+                "material",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"tax_rate_uuid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d54bbe04-456d-4d80-a1c2-6fd1c51b4523",
+              "name": "Material updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"tax_rate_uuid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8883e7ec-8bb5-4c27-bcd6-c2255560dd4a",
+          "name": "Delete a material",
+          "request": {
+            "name": "Delete a material",
+            "description": {},
+            "url": {
+              "path": [
+                "material",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dac7b965-ac5c-4142-9049-6b96f600313b",
+              "name": "Material deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "material",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa81b999-c32d-414c-b6df-d9b4a0891467",
+          "name": "List job materials",
+          "request": {
+            "name": "List job materials",
+            "description": {
+              "content": "Line items (materials/labour) added to a specific job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "jobmaterial.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91d4ce74-951c-4daf-80d4-850d8d3d2464",
+              "name": "An array of job material records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmaterial.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 9539,\n    \"job_uuid\": \"string\",\n    \"material_uuid\": \"string\",\n    \"name\": \"string\",\n    \"quantity\": \"string\",\n    \"price\": \"string\",\n    \"cost\": \"string\",\n    \"displayed_amount\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 1870,\n    \"job_uuid\": \"string\",\n    \"material_uuid\": \"string\",\n    \"name\": \"string\",\n    \"quantity\": \"string\",\n    \"price\": \"string\",\n    \"cost\": \"string\",\n    \"displayed_amount\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eda0dad4-df31-4889-a033-000c8e166568",
+          "name": "Create a job material",
+          "request": {
+            "name": "Create a job material",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmaterial.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"material_uuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"quantity\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"displayed_amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3527b652-dc82-49fc-b88a-9008bb6c19b3",
+              "name": "Job material created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmaterial.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"material_uuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"quantity\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"displayed_amount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45de3e2d-4f5d-4abc-969a-229b79affcbe",
+          "name": "Retrieve a job material",
+          "request": {
+            "name": "Retrieve a job material",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmaterial",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09eb8cdd-21a5-4014-a962-35d2707a0967",
+              "name": "A single job material record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmaterial",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"material_uuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"quantity\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"displayed_amount\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac5a058c-95c7-4bb8-b0d7-f61c6dd64e9d",
+          "name": "Update a job material",
+          "request": {
+            "name": "Update a job material",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmaterial",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"material_uuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"quantity\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"displayed_amount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7df4543b-5b1b-423f-acf2-71d30a45a4f4",
+              "name": "Job material updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmaterial",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"material_uuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"quantity\": \"<string>\",\n  \"price\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"displayed_amount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbaa89b2-717a-450f-a86a-6e1c70a824ed",
+          "name": "Delete a job material",
+          "request": {
+            "name": "Delete a job material",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmaterial",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b3341fb-3b2f-4ec2-b854-7f9df41ef41e",
+              "name": "Job material deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmaterial",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fe12f352-5dde-4192-91cc-64b4c480d3bc",
+    "name": "ServiceM8 REST Attachments Materials API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

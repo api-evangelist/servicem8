@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ServiceM8 REST Attachments Job Activities API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Job Activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List job activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/jobactivity.json",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+              }
+            ]
+          },
+          "docs": "List job activities"
+        },
+        {
+          "info": {
+            "name": "Create a job activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/jobactivity.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a job activity"
+        },
+        {
+          "info": {
+            "name": "Retrieve a job activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/jobactivity/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Retrieve a job activity"
+        },
+        {
+          "info": {
+            "name": "Update a job activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/jobactivity/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a job activity"
+        },
+        {
+          "info": {
+            "name": "Delete a job activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.servicem8.com/api_1.0/jobactivity/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Delete a job activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,512 @@
+{
+  "item": [
+    {
+      "id": "9c59448c-8999-44a2-b9c0-156a3493236b",
+      "name": "Job Activities",
+      "description": {
+        "content": "Scheduled bookings and recorded time entries on a job.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93690255-97b3-4870-b04e-4ae63bae6510",
+          "name": "List job activities",
+          "request": {
+            "name": "List job activities",
+            "description": {},
+            "url": {
+              "path": [
+                "jobactivity.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cfb0e39-5118-43ca-84d0-87210f33750a",
+              "name": "An array of job activity records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 8886,\n    \"job_uuid\": \"string\",\n    \"staff_uuid\": \"string\",\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"activity_was_scheduled\": 1200,\n    \"activity_was_recorded\": 1891\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 2764,\n    \"job_uuid\": \"string\",\n    \"staff_uuid\": \"string\",\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"activity_was_scheduled\": 2150,\n    \"activity_was_recorded\": 3204\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3e9c168e-a791-460c-8cd7-b6817e968945",
+              "name": "Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text \"Number of allowed API requests per minute exceeded\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00a6bc25-adea-45af-b45f-147aa1d8de05",
+          "name": "Create a job activity",
+          "request": {
+            "name": "Create a job activity",
+            "description": {},
+            "url": {
+              "path": [
+                "jobactivity.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"staff_uuid\": \"<string>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"activity_was_scheduled\": \"<integer>\",\n  \"activity_was_recorded\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c98bdef6-08f8-4c6d-a24a-98beac966a69",
+              "name": "Job activity created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"staff_uuid\": \"<string>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"activity_was_scheduled\": \"<integer>\",\n  \"activity_was_recorded\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23e3d9d8-85f7-46e8-8ce5-d346c1bfab2f",
+          "name": "Retrieve a job activity",
+          "request": {
+            "name": "Retrieve a job activity",
+            "description": {},
+            "url": {
+              "path": [
+                "jobactivity",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46f0bebf-8fd0-4b6f-9e68-18e6910dc701",
+              "name": "A single job activity record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"staff_uuid\": \"<string>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"activity_was_scheduled\": \"<integer>\",\n  \"activity_was_recorded\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1fb87ec-99d2-4f0a-b3be-26c2f3ded725",
+          "name": "Update a job activity",
+          "request": {
+            "name": "Update a job activity",
+            "description": {},
+            "url": {
+              "path": [
+                "jobactivity",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"staff_uuid\": \"<string>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"activity_was_scheduled\": \"<integer>\",\n  \"activity_was_recorded\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef5a843a-cc56-45e6-a857-69faab641782",
+              "name": "Job activity updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"job_uuid\": \"<string>\",\n  \"staff_uuid\": \"<string>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"activity_was_scheduled\": \"<integer>\",\n  \"activity_was_recorded\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da9a6c36-a08a-4270-8292-cac57635f4dd",
+          "name": "Delete a job activity",
+          "request": {
+            "name": "Delete a job activity",
+            "description": {},
+            "url": {
+              "path": [
+                "jobactivity",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a6c5abc-8924-4e6c-bf50-d8d0249dc9c6",
+              "name": "Job activity deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobactivity",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6292f8b3-e401-44ad-a503-4e61616195dc",
+    "name": "ServiceM8 REST Attachments Job Activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

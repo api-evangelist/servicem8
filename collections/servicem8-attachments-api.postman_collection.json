@@ -1,0 +1,626 @@
+{
+  "item": [
+    {
+      "id": "9f9a9be1-43ad-4c94-af9e-181dc0aaab50",
+      "name": "Attachments",
+      "description": {
+        "content": "Files linked to jobs - photos, PDFs, signed documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60fa1130-5934-42ac-8aaf-42c0baeb76d3",
+          "name": "List attachments",
+          "request": {
+            "name": "List attachments",
+            "description": {
+              "content": "Lists attachment metadata records. The binary file itself is fetched or uploaded at /attachment/{uuid}.file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "attachment.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80159f74-16d8-4b3c-aa6d-2947f4767fc3",
+              "name": "An array of attachment records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 9464,\n    \"related_object\": \"string\",\n    \"related_object_uuid\": \"string\",\n    \"attachment_name\": \"string\",\n    \"file_type\": \"string\",\n    \"photo_width\": \"string\",\n    \"photo_height\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 887,\n    \"related_object\": \"string\",\n    \"related_object_uuid\": \"string\",\n    \"attachment_name\": \"string\",\n    \"file_type\": \"string\",\n    \"photo_width\": \"string\",\n    \"photo_height\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b325870-f7f8-4542-85bf-618897d3011d",
+          "name": "Create an attachment record",
+          "request": {
+            "name": "Create an attachment record",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"related_object\": \"<string>\",\n  \"related_object_uuid\": \"<string>\",\n  \"attachment_name\": \"<string>\",\n  \"file_type\": \"<string>\",\n  \"photo_width\": \"<string>\",\n  \"photo_height\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "611f9622-d0cb-4ffc-96cf-5211f2a70f76",
+              "name": "Attachment metadata created. Upload the file bytes to /attachment/{uuid}.file.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"related_object\": \"<string>\",\n  \"related_object_uuid\": \"<string>\",\n  \"attachment_name\": \"<string>\",\n  \"file_type\": \"<string>\",\n  \"photo_width\": \"<string>\",\n  \"photo_height\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ea39d8c-8ade-4924-b096-4db09a18e850",
+          "name": "Retrieve an attachment record",
+          "request": {
+            "name": "Retrieve an attachment record",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eda96fd1-5a1c-4d17-81c0-7d64f2d688e2",
+              "name": "A single attachment record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"related_object\": \"<string>\",\n  \"related_object_uuid\": \"<string>\",\n  \"attachment_name\": \"<string>\",\n  \"file_type\": \"<string>\",\n  \"photo_width\": \"<string>\",\n  \"photo_height\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "423f09cb-43c3-4e28-b6ab-41d4cb5476e5",
+          "name": "Update an attachment record",
+          "request": {
+            "name": "Update an attachment record",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"related_object\": \"<string>\",\n  \"related_object_uuid\": \"<string>\",\n  \"attachment_name\": \"<string>\",\n  \"file_type\": \"<string>\",\n  \"photo_width\": \"<string>\",\n  \"photo_height\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "133f063c-c446-4b15-a21a-b6d14a5b675f",
+              "name": "Attachment updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"related_object\": \"<string>\",\n  \"related_object_uuid\": \"<string>\",\n  \"attachment_name\": \"<string>\",\n  \"file_type\": \"<string>\",\n  \"photo_width\": \"<string>\",\n  \"photo_height\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da15cbfb-e236-4b99-b060-b121f8bba4d8",
+          "name": "Delete an attachment",
+          "request": {
+            "name": "Delete an attachment",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f056df57-ecb6-412a-9908-5f67de070c22",
+              "name": "Attachment deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df3f6ed4-ae9c-443d-b80f-f8432edbfbff",
+          "name": "Download attachment file bytes",
+          "request": {
+            "name": "Download attachment file bytes",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment",
+                "{{uuid}}.file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2aa84a72-51af-45af-8c52-c84f8b24e45c",
+              "name": "The binary contents of the attachment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment",
+                    "{{uuid}}.file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8502d67f-cd9a-4499-b3f8-37b7436eb769",
+          "name": "Upload attachment file bytes",
+          "request": {
+            "name": "Upload attachment file bytes",
+            "description": {},
+            "url": {
+              "path": [
+                "attachment",
+                "{{uuid}}.file"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "file"
+            }
+          },
+          "response": [
+            {
+              "id": "d778fd24-e5b4-4d09-9c0f-ff0ee3e025de",
+              "name": "File uploaded for the attachment record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attachment",
+                    "{{uuid}}.file"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "561e2efd-ee1b-4e27-bbd0-f54b87576229",
+    "name": "ServiceM8 REST Attachments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

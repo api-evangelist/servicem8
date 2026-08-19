@@ -1,0 +1,924 @@
+{
+  "item": [
+    {
+      "id": "7e8011c3-28af-44c1-b726-f2b129e4f93a",
+      "name": "Clients",
+      "description": {
+        "content": "Companies (clients/customers) and their contacts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "34d23e08-2ebf-4666-a401-5426bdd3c817",
+          "name": "List companies (clients)",
+          "request": {
+            "name": "List companies (clients)",
+            "description": {
+              "content": "Lists client companies. In the ServiceM8 UI these are Clients/Customers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "company.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0f4ae80-ddeb-4a74-a5f4-091c80c684f2",
+              "name": "An array of company records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 790,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"website\": \"string\",\n    \"billing_address\": \"string\",\n    \"address\": \"string\",\n    \"is_individual\": 7419,\n    \"badges\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 6941,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"website\": \"string\",\n    \"billing_address\": \"string\",\n    \"address\": \"string\",\n    \"is_individual\": 406,\n    \"badges\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6024a216-aaaf-4e06-9498-bf353b892f70",
+              "name": "Missing or invalid API key / access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91ea67d6-1562-44b6-bb0b-530fcded9343",
+          "name": "Create a company",
+          "request": {
+            "name": "Create a company",
+            "description": {},
+            "url": {
+              "path": [
+                "company.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"website\": \"<string>\",\n  \"billing_address\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_individual\": \"<integer>\",\n  \"badges\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "590832b0-457b-48b4-878a-5f13d1b457cb",
+              "name": "Company created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"website\": \"<string>\",\n  \"billing_address\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_individual\": \"<integer>\",\n  \"badges\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb6ea823-3a3f-4661-adbc-0390dc1f8ebf",
+          "name": "Retrieve a company",
+          "request": {
+            "name": "Retrieve a company",
+            "description": {},
+            "url": {
+              "path": [
+                "company",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2705695a-d78e-4a35-ae2a-e6a55c2f3cf8",
+              "name": "A single company record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"website\": \"<string>\",\n  \"billing_address\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_individual\": \"<integer>\",\n  \"badges\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a93d92a8-0664-4d73-bae5-c23eae72893b",
+          "name": "Update a company",
+          "request": {
+            "name": "Update a company",
+            "description": {},
+            "url": {
+              "path": [
+                "company",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"website\": \"<string>\",\n  \"billing_address\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_individual\": \"<integer>\",\n  \"badges\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7359c121-dc60-4ba5-8244-c5a3f44df006",
+              "name": "Company updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"website\": \"<string>\",\n  \"billing_address\": \"<string>\",\n  \"address\": \"<string>\",\n  \"is_individual\": \"<integer>\",\n  \"badges\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61c4b30d-8933-4573-b234-380a8b4c998d",
+          "name": "Delete a company",
+          "request": {
+            "name": "Delete a company",
+            "description": {},
+            "url": {
+              "path": [
+                "company",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bc369b9-ccc0-4a28-aaec-4cb7c43d8910",
+              "name": "Company deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "company",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "906caaf1-909f-4b2e-a85d-ed7b25d9fd8f",
+          "name": "List company contacts",
+          "request": {
+            "name": "List company contacts",
+            "description": {},
+            "url": {
+              "path": [
+                "companycontact.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a07e3a67-80c7-442c-8478-888349186088",
+              "name": "An array of company contact records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companycontact.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 9086,\n    \"company_uuid\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"type\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 3561,\n    \"company_uuid\": \"string\",\n    \"first\": \"string\",\n    \"last\": \"string\",\n    \"email\": \"string\",\n    \"phone\": \"string\",\n    \"mobile\": \"string\",\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee6f0574-d3da-4b0a-a9de-aec744d15597",
+          "name": "Create a company contact",
+          "request": {
+            "name": "Create a company contact",
+            "description": {},
+            "url": {
+              "path": [
+                "companycontact.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"company_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1dad2df3-7129-46d7-a3f6-3165cd7dbbe2",
+              "name": "Company contact created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companycontact.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"company_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b19bc5b0-6988-445c-9ad0-7d3c1a47f2e4",
+          "name": "Retrieve a company contact",
+          "request": {
+            "name": "Retrieve a company contact",
+            "description": {},
+            "url": {
+              "path": [
+                "companycontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b53d2106-4ff9-4432-8230-f02675ef27f9",
+              "name": "A single company contact record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companycontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"company_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83f21a55-eb4c-45a7-9119-15ebb9440bf2",
+          "name": "Update a company contact",
+          "request": {
+            "name": "Update a company contact",
+            "description": {},
+            "url": {
+              "path": [
+                "companycontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"company_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a54467a-36e7-42d1-aef3-0e1311979198",
+              "name": "Company contact updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companycontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"company_uuid\": \"<string>\",\n  \"first\": \"<string>\",\n  \"last\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"mobile\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a77a121-9cfc-4806-9628-8d6f37759ea9",
+          "name": "Delete a company contact",
+          "request": {
+            "name": "Delete a company contact",
+            "description": {},
+            "url": {
+              "path": [
+                "companycontact",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ec8ce28-27ae-440f-bae3-7316c0807a17",
+              "name": "Company contact deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "companycontact",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "09a281b3-bfaa-46bd-9da1-ebe83b4427e4",
+    "name": "ServiceM8 REST Attachments Clients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

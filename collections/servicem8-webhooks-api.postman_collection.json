@@ -1,0 +1,401 @@
+{
+  "item": [
+    {
+      "id": "a4dba889-f42a-4a04-8e6b-b0360eb73c31",
+      "name": "Webhooks",
+      "description": {
+        "content": "Object and event webhook subscriptions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "49bee379-fdd6-4116-b8a8-93347860aa4a",
+          "name": "List webhook subscriptions",
+          "request": {
+            "name": "List webhook subscriptions",
+            "description": {},
+            "url": {
+              "path": [
+                "webhook_subscriptions"
+              ],
+              "host": [
+                "{{webhook_subscriptions-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92dcd98c-a734-4c75-a71f-843a8ee3e800",
+              "name": "An array of webhook subscription records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhook_subscriptions"
+                  ],
+                  "host": [
+                    "{{webhook_subscriptions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"object\": \"string\",\n    \"fields\": \"string\",\n    \"callback_url\": \"string\",\n    \"unique_id\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"object\": \"string\",\n    \"fields\": \"string\",\n    \"callback_url\": \"string\",\n    \"unique_id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb705db9-5866-44d1-90c3-d059e5b451d2",
+          "name": "Create or update an object webhook subscription",
+          "request": {
+            "name": "Create or update an object webhook subscription",
+            "description": {
+              "content": "Subscribe to changes on specific fields of an object type. When a subscribed field changes, ServiceM8 POSTs the object type, changed fields, uuid, and a resource_url to your callback URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhook_subscriptions"
+              ],
+              "host": [
+                "{{webhook_subscriptions-Url}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"object\": \"<string>\",\n  \"fields\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"unique_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "545f4614-a4cb-430b-9ae0-0048754e5e64",
+              "name": "Webhook subscription created or updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhook_subscriptions"
+                  ],
+                  "host": [
+                    "{{webhook_subscriptions-Url}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"object\": \"<string>\",\n  \"fields\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"unique_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e01f865-d536-4478-b089-62ce9fb73c0e",
+          "name": "Retrieve a webhook subscription",
+          "request": {
+            "name": "Retrieve a webhook subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "webhook_subscriptions",
+                ":uuid"
+              ],
+              "host": [
+                "{{webhook_subscriptions-uuid-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) The UUID of the record."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d29190a5-cf5a-4479-b665-79d8ffa1ac33",
+              "name": "A single webhook subscription record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhook_subscriptions",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{webhook_subscriptions-uuid-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"object\": \"<string>\",\n  \"fields\": \"<string>\",\n  \"callback_url\": \"<string>\",\n  \"unique_id\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41039ec4-c6e0-44de-8b6f-494531086ab4",
+          "name": "Delete a webhook subscription",
+          "request": {
+            "name": "Delete a webhook subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "webhook_subscriptions",
+                ":uuid"
+              ],
+              "host": [
+                "{{webhook_subscriptions-uuid-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uuid",
+                  "description": "(Required) The UUID of the record."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d2f292f-d5f4-40fe-a0ad-c981d31b412a",
+              "name": "Webhook subscription deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhook_subscriptions",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{webhook_subscriptions-uuid-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uuid",
+                      "description": "(Required) The UUID of the record."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com",
+      "key": "webhook_subscriptions-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com",
+      "key": "webhook_subscriptions-uuid-Url"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "558db0a6-223f-437a-ad9a-04e0f57936e1",
+    "name": "ServiceM8 REST Attachments Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

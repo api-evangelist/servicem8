@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ServiceM8 REST Attachments API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List attachments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/attachment.json",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+              }
+            ]
+          },
+          "docs": "Lists attachment metadata records. The binary file itself is fetched or uploaded at /attachment/{uuid}.file."
+        },
+        {
+          "info": {
+            "name": "Create an attachment record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/attachment.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an attachment record"
+        },
+        {
+          "info": {
+            "name": "Retrieve an attachment record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Retrieve an attachment record"
+        },
+        {
+          "info": {
+            "name": "Update an attachment record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an attachment record"
+        },
+        {
+          "info": {
+            "name": "Delete an attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Delete an attachment"
+        },
+        {
+          "info": {
+            "name": "Download attachment file bytes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.file",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Download attachment file bytes"
+        },
+        {
+          "info": {
+            "name": "Upload attachment file bytes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/attachment/:uuid.file",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Upload attachment file bytes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

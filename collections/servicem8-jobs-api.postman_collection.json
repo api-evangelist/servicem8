@@ -1,0 +1,781 @@
+{
+  "item": [
+    {
+      "id": "bd1ff3f4-a16c-4bc5-9d14-d1449f9574fb",
+      "name": "Jobs",
+      "description": {
+        "content": "Jobs - the central record for a piece of work.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02f7a551-5a02-4427-a94b-28bb98a2c464",
+          "name": "List jobs",
+          "request": {
+            "name": "List jobs",
+            "description": {
+              "content": "Lists jobs in the account. Supports OData-style $filter on fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "job.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51ffc66c-08d4-44f4-bc64-e20b11593c5d",
+              "name": "An array of job records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"active\": 810,\n    \"created_by_staff_uuid\": \"string\",\n    \"date\": \"string\",\n    \"company_uuid\": \"string\",\n    \"generated_job_id\": \"string\",\n    \"status\": \"string\",\n    \"job_address\": \"string\",\n    \"job_description\": \"string\",\n    \"work_done_description\": \"string\",\n    \"queue_uuid\": \"string\",\n    \"total_invoice_amount\": \"string\",\n    \"edit\": \"string\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"active\": 9061,\n    \"created_by_staff_uuid\": \"string\",\n    \"date\": \"string\",\n    \"company_uuid\": \"string\",\n    \"generated_job_id\": \"string\",\n    \"status\": \"string\",\n    \"job_address\": \"string\",\n    \"job_description\": \"string\",\n    \"work_done_description\": \"string\",\n    \"queue_uuid\": \"string\",\n    \"total_invoice_amount\": \"string\",\n    \"edit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ef3a09f-545b-41a2-9569-9e4e0bc5961c",
+              "name": "Missing or invalid API key / access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "540dbb39-f8b7-40ba-b07c-a998943b8e29",
+              "name": "Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text \"Number of allowed API requests per minute exceeded\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d3089b3-a2a2-4a2f-ad4e-2f4be768f325",
+          "name": "Create a job",
+          "request": {
+            "name": "Create a job",
+            "description": {},
+            "url": {
+              "path": [
+                "job.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50dc13d9-86b1-419a-8455-4dfb30fbb2f7",
+              "name": "Job created. The new record UUID is returned in the x-record-uuid header.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "07686500-6d99-4d1f-afd4-fd0bcb9209ef",
+              "name": "Missing or invalid API key / access token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a0d3aaa0-2b46-4101-a883-980206a53bdd",
+              "name": "Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text \"Number of allowed API requests per minute exceeded\".",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fd5e7c0-7851-4569-b0e8-7496f0b1f80b",
+          "name": "Retrieve a job",
+          "request": {
+            "name": "Retrieve a job",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38a46df4-4659-458f-b951-cf8d18953e75",
+              "name": "A single job record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a39e30-a2bd-4792-8389-44ef6015b8f7",
+              "name": "The requested record does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2bab5d2-61f8-4e80-83a4-6166d574b0bd",
+          "name": "Update a job",
+          "request": {
+            "name": "Update a job",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad85381c-0504-4a39-9bdf-706f95ad6d12",
+              "name": "Job updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4c699821-4d80-405f-8da9-807aa4be59a4",
+              "name": "The requested record does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"<string>\",\n  \"active\": \"<integer>\",\n  \"created_by_staff_uuid\": \"<string>\",\n  \"date\": \"<string>\",\n  \"company_uuid\": \"<string>\",\n  \"generated_job_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"job_address\": \"<string>\",\n  \"job_description\": \"<string>\",\n  \"work_done_description\": \"<string>\",\n  \"queue_uuid\": \"<string>\",\n  \"total_invoice_amount\": \"<string>\",\n  \"edit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00a23047-c0a6-48d2-832d-768de2e79eb7",
+          "name": "Delete a job",
+          "request": {
+            "name": "Delete a job",
+            "description": {},
+            "url": {
+              "path": [
+                "job",
+                "{{uuid}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2133edb1-e604-4540-828a-0f17298b2b25",
+              "name": "Job deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a2e59fc-521c-4592-abf9-9e2daf4617a8",
+              "name": "The requested record does not exist.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "job",
+                    "{{uuid}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.servicem8.com/api_1.0",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The UUID of the record.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "uuid"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6cb3018c-7fbe-4f36-8d32-c7dbe44cf966",
+    "name": "ServiceM8 REST Attachments Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.\n\nPrivate integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.\n\nNaming note: the ServiceM8 user interface term \"Client\" or \"Customer\" maps to the \"Company\" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8's own documentation) are modeled from ServiceM8's documented resource index and its consistent lowercase object naming convention.\n\nContact Support:\n Name: ServiceM8 Developer",
+      "type": "text/plain"
+    }
+  }
+}

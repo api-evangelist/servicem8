@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ServiceM8 REST Attachments Staff API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Staff",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List staff members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/staff.json",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields."
+              }
+            ]
+          },
+          "docs": "List staff members"
+        },
+        {
+          "info": {
+            "name": "Create a staff member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/staff.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a staff member"
+        },
+        {
+          "info": {
+            "name": "Retrieve a staff member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.servicem8.com/api_1.0/staff/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Retrieve a staff member"
+        },
+        {
+          "info": {
+            "name": "Update a staff member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.servicem8.com/api_1.0/staff/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a staff member"
+        },
+        {
+          "info": {
+            "name": "Delete a staff member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.servicem8.com/api_1.0/staff/:uuid.json",
+            "params": [
+              {
+                "name": "uuid",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the record."
+              }
+            ]
+          },
+          "docs": "Delete a staff member"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
