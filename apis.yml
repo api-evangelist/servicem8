@@ -154,6 +154,8 @@ apis:
   humanURL: https://developer.servicem8.com/docs/rest-overview
   baseURL: https://api.servicem8.com/api_1.0
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -264,6 +266,8 @@ apis:
   humanURL: https://developer.servicem8.com/docs/rest-overview
   baseURL: https://api.servicem8.com/api_1.0
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
