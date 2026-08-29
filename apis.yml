@@ -12,6 +12,18 @@ description: ServiceM8 is field service and job management software for trade an
   over HTTP using GET, POST, and DELETE. Private integrations authenticate with an
   API key (X-API-Key header); public add-ons use OAuth 2.0. Object and event webhook
   subscriptions push change notifications to a callback URL.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
