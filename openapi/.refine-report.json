@@ -1,17 +1,7 @@
 {
   "provider": "servicem8",
   "sources": [
-    "servicem8-attachments-api-openapi.yml",
-    "servicem8-badges-api-openapi.yml",
-    "servicem8-clients-api-openapi.yml",
-    "servicem8-job-activities-api-openapi.yml",
-    "servicem8-job-contacts-api-openapi.yml",
-    "servicem8-jobs-api-openapi.yml",
-    "servicem8-materials-api-openapi.yml",
-    "servicem8-queues-api-openapi.yml",
-    "servicem8-staff-api-openapi.yml",
-    "servicem8-vendors-api-openapi.yml",
-    "servicem8-webhooks-api-openapi.yml"
+    "_original/servicem8-openapi.yml"
   ],
   "outputs": [
     "servicem8-attachments-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "servicem8-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "servicem8-attachments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-badges-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-clients-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-job-activities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-job-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-materials-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-queues-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-staff-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-vendors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "servicem8-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

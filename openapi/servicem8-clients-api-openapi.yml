@@ -1,13 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: ServiceM8 REST Attachments Clients API
-  description: 'ServiceM8 is field service and job management software for trade and home-service businesses. The REST API is plain JSON over HTTP and closely follows REST principles: every resource (Job, Company, JobActivity, Attachment, and so on) has its own URL and is manipulated in isolation using GET, POST, and DELETE. The base URL is https://api.servicem8.com/api_1.0 and each object type is exposed as a `.json` collection - for example GET /company.json lists companies and GET /company/{uuid}.json retrieves one. Creating a record is a POST to the collection; updating a record is a POST to the record URL; deleting is a DELETE to the record URL.
-
-
-    Private integrations authenticate with an API key sent in the `X-API-Key` header. Public add-ons authenticate with OAuth 2.0 (authorize at https://go.servicem8.com/oauth/authorize, exchange the code at https://go.servicem8.com/oauth/access_token) and send a Bearer access token.
-
-
-    Naming note: the ServiceM8 user interface term "Client" or "Customer" maps to the "Company" object in the API. Only a subset of ServiceM8 functionality is modeled here; ServiceM8 documents 60+ objects. Object endpoint filenames other than company.json, jobcontact.json, and companycontact.json (which are confirmed in ServiceM8''s own documentation) are modeled from ServiceM8''s documented resource index and its consistent lowercase object naming convention.'
+  title: ServiceM8 REST Clients API
+  description: ServiceM8 is field service and job management software for trade and home-service businesses.
   version: '1.0'
   contact:
     name: ServiceM8 Developer
@@ -167,28 +161,22 @@ paths:
         '200':
           description: Company contact deleted.
 components:
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
   schemas:
-    CompanyContact:
-      type: object
-      properties:
-        uuid:
-          type: string
-        active:
-          type: integer
-        company_uuid:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
-        mobile:
-          type: string
-        type:
-          type: string
     Company:
       type: object
       description: A client/customer (called Company in the API).
@@ -212,21 +200,27 @@ components:
         badges:
           type: string
           description: Comma-separated list of badge UUIDs.
-  parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
-    Filter:
-      name: $filter
-      in: query
-      required: false
-      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
-      schema:
-        type: string
+    CompanyContact:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        company_uuid:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        mobile:
+          type: string
+        type:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key / access token.
