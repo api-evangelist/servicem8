@@ -162,13 +162,6 @@ paths:
           description: Company contact deleted.
 components:
   parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
     Filter:
       name: $filter
       in: query
@@ -176,7 +169,35 @@ components:
       description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
       schema:
         type: string
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
   schemas:
+    CompanyContact:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        company_uuid:
+          type: string
+        first:
+          type: string
+        last:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        mobile:
+          type: string
+        type:
+          type: string
     Company:
       type: object
       description: A client/customer (called Company in the API).
@@ -200,27 +221,6 @@ components:
         badges:
           type: string
           description: Comma-separated list of badge UUIDs.
-    CompanyContact:
-      type: object
-      properties:
-        uuid:
-          type: string
-        active:
-          type: integer
-        company_uuid:
-          type: string
-        first:
-          type: string
-        last:
-          type: string
-        email:
-          type: string
-        phone:
-          type: string
-        mobile:
-          type: string
-        type:
-          type: string
   responses:
     Unauthorized:
       description: Missing or invalid API key / access token.

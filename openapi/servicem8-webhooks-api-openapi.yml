@@ -79,6 +79,14 @@ paths:
         '200':
           description: Webhook subscription deleted.
 components:
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
   schemas:
     WebhookSubscription:
       type: object
@@ -96,14 +104,6 @@ components:
         unique_id:
           type: string
           description: Optional identifier for grouping subscriptions.
-  parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

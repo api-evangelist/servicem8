@@ -92,6 +92,21 @@ paths:
         '200':
           description: Job activity deleted.
 components:
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
   schemas:
     JobActivity:
       type: object
@@ -115,21 +130,6 @@ components:
   responses:
     Throttled:
       description: Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text "Number of allowed API requests per minute exceeded".
-  parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
-    Filter:
-      name: $filter
-      in: query
-      required: false
-      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
-      schema:
-        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

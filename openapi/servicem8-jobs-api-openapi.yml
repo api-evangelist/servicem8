@@ -106,18 +106,18 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
     Filter:
       name: $filter
       in: query
       required: false
       description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
       schema:
         type: string
   responses:

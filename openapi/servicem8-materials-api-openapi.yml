@@ -159,24 +159,22 @@ paths:
         '200':
           description: Job material deleted.
 components:
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
   schemas:
-    Material:
-      type: object
-      properties:
-        uuid:
-          type: string
-        active:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        price:
-          type: string
-        cost:
-          type: string
-        tax_rate_uuid:
-          type: string
     JobMaterial:
       type: object
       properties:
@@ -198,21 +196,23 @@ components:
           type: string
         displayed_amount:
           type: string
-  parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
-    Filter:
-      name: $filter
-      in: query
-      required: false
-      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
-      schema:
-        type: string
+    Material:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: string
+        cost:
+          type: string
+        tax_rate_uuid:
+          type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
