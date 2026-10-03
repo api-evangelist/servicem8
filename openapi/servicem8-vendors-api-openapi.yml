@@ -53,14 +53,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Vendor'
 components:
-  parameters:
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
   schemas:
     Vendor:
       type: object
@@ -75,6 +67,14 @@ components:
           type: string
         timezone:
           type: string
+  parameters:
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

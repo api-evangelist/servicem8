@@ -105,28 +105,13 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    Filter:
-      name: $filter
-      in: query
-      required: false
-      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
-      schema:
-        type: string
-    Uuid:
-      name: uuid
-      in: path
-      required: true
-      description: The UUID of the record.
-      schema:
-        type: string
   responses:
-    NotFound:
-      description: The requested record does not exist.
-    Throttled:
-      description: Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text "Number of allowed API requests per minute exceeded".
     Unauthorized:
       description: Missing or invalid API key / access token.
+    Throttled:
+      description: Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text "Number of allowed API requests per minute exceeded".
+    NotFound:
+      description: The requested record does not exist.
   schemas:
     Job:
       type: object
@@ -161,6 +146,21 @@ components:
         edit:
           type: string
           description: Last edit timestamp.
+  parameters:
+    Filter:
+      name: $filter
+      in: query
+      required: false
+      description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
+      schema:
+        type: string
+    Uuid:
+      name: uuid
+      in: path
+      required: true
+      description: The UUID of the record.
+      schema:
+        type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey
