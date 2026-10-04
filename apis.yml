@@ -305,6 +305,9 @@ apis:
   - type: APIReference
     url: https://developer.servicem8.com/reference/get_webhook_subscriptions
 common:
+- type: CapabilityMap
+  url: capabilities/servicem8-capability-edges.yml
+  name: ServiceM8 Business Capability Map
 - type: AgenticAccess
   url: agentic-access/servicem8-agentic-access.yml
 - type: VulnerabilityDisclosure
