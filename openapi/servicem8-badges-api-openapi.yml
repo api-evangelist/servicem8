@@ -90,18 +90,6 @@ paths:
         '200':
           description: Badge deleted.
 components:
-  schemas:
-    Badge:
-      type: object
-      properties:
-        uuid:
-          type: string
-        active:
-          type: integer
-        name:
-          type: string
-        colour:
-          type: string
   parameters:
     Uuid:
       name: uuid
@@ -117,6 +105,18 @@ components:
       description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
       schema:
         type: string
+  schemas:
+    Badge:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        name:
+          type: string
+        colour:
+          type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

@@ -90,20 +90,6 @@ paths:
         '200':
           description: Queue deleted.
 components:
-  schemas:
-    Queue:
-      type: object
-      properties:
-        uuid:
-          type: string
-        active:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-        sort_order:
-          type: integer
   parameters:
     Uuid:
       name: uuid
@@ -119,6 +105,20 @@ components:
       description: OData-style filter expression, e.g. `$filter=active eq 1` or `edit gt '2026-01-01'`. Filtering is supported on indexed fields.
       schema:
         type: string
+  schemas:
+    Queue:
+      type: object
+      properties:
+        uuid:
+          type: string
+        active:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        sort_order:
+          type: integer
   securitySchemes:
     apiKeyAuth:
       type: apiKey
