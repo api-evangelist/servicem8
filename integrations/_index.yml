@@ -39,7 +39,7 @@
     app_slug: servicem8
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: servicem8-n8n
   label: n8n
@@ -66,7 +66,7 @@
     published: '2026-01-13T04:42:40.287Z'
     matched_on: publisher-email
     builder: provider (package published from the provider's own domain)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: servicem8-pipedream
   label: Pipedream
@@ -92,5 +92,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
