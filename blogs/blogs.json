@@ -4,13 +4,12 @@
     {
       "source": "https://blog.servicem8.com/feed/",
       "feed_url": "https://blog.servicem8.com/feed/",
-      "title": "ServiceM8 Blog",
+      "title": "",
       "saved": 0,
-      "nature": "vendor-blog",
-      "nature_basis": "blog_subdomain"
+      "method": "feed"
     }
   ],
-  "fetched": "2026-10-03T12:15:37Z",
+  "fetched": "2026-10-10T13:15:00Z",
   "post_count": 12,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "blog_subdomain",
