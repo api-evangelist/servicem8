@@ -92,9 +92,6 @@ paths:
         '200':
           description: Job activity deleted.
 components:
-  responses:
-    Throttled:
-      description: Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text "Number of allowed API requests per minute exceeded".
   parameters:
     Uuid:
       name: uuid
@@ -130,6 +127,9 @@ components:
           type: integer
         activity_was_recorded:
           type: integer
+  responses:
+    Throttled:
+      description: Rate limit exceeded (180 requests/minute or 20,000 requests/day). Body is the text "Number of allowed API requests per minute exceeded".
   securitySchemes:
     apiKeyAuth:
       type: apiKey
