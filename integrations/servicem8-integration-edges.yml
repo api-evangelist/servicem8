@@ -8,6 +8,7 @@ checked:
 - https://zapier.com/api/v4/apps/
 - n8n/integrations/n8n-integration-edges.yml
 - xero/integrations/xero-integration-edges.yml
+- https://www.servicem8.com/addons
 source:
 - xero/integrations/xero-integration-edges.yml
 edges:
@@ -150,3 +151,13 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: servicem8
+  url: https://www.servicem8.com/addons
+  app_count: 53
+  adapter: sweep-field-service.py:servicem8
+  listed: 0
+  note: only domain-linked (or labelled register-name) vendors are written; unknown-builder listings stay out of
+    position shares
